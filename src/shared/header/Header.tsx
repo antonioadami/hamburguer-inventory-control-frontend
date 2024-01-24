@@ -1,56 +1,55 @@
 import React from 'react';
-
+import styled from 'styled-components'
 import { Button } from '../button/Button';
-import './header.css';
 
 type User = {
   name: string;
 };
 
-interface HeaderProps {
-  user?: User;
-  onLogin: () => void;
-  onLogout: () => void;
-  onCreateAccount: () => void;
-}
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => (
-  <header>
-    <div className="storybook-header">
+const StyledHeader = styled.header`
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const StyledIcon = styled.svg`
+  display: inline-block;
+  vertical-align: top;
+  color: red;
+`
+
+const ButtonsDiv = styled.div`
+  & button + button {
+    margin-left: 10px;
+  }
+`
+
+const StyledH1 = styled.h1`
+font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  margin: 6px 0 6px 10px;
+  display: inline-block;
+  vertical-align: top;
+  color: red;
+`
+
+export const Header = () => (
+  <StyledHeader>
       <div>
-        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <g fill="none" fillRule="evenodd">
-            <path
-              d="M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z"
-              fill="#FFF"
-            />
-            <path
-              d="M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z"
-              fill="#555AB9"
-            />
-            <path
-              d="M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z"
-              fill="#91BAF8"
-            />
-          </g>
-        </svg>
-        <h1>Acme</h1>
+        <StyledIcon xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32" height="32">
+          <path fill="#ff0000" d="M61.1 224C45 224 32 211 32 194.9c0-1.9 .2-3.7 .6-5.6C37.9 168.3 78.8 32 256 32s218.1 136.3 223.4 157.3c.5 1.9 .6 3.7 .6 5.6c0 16.1-13 29.1-29.1 29.1H61.1zM144 128a16 16 0 1 0 -32 0 16 16 0 1 0 32 0zm240 16a16 16 0 1 0 0-32 16 16 0 1 0 0 32zM272 96a16 16 0 1 0 -32 0 16 16 0 1 0 32 0zM16 304c0-26.5 21.5-48 48-48H448c26.5 0 48 21.5 48 48s-21.5 48-48 48H64c-26.5 0-48-21.5-48-48zm16 96c0-8.8 7.2-16 16-16H464c8.8 0 16 7.2 16 16v16c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V400z"/>
+        </StyledIcon>
+        <StyledH1>Burger Menu</StyledH1>
       </div>
-      <div>
-        {user ? (
-          <>
-            <span className="welcome">
-              Welcome, <b>{user.name}</b>!
-            </span>
-            <Button size="small" onClick={onLogout}>Log out</Button>
-          </>
-        ) : (
-          <>
-            <Button size="small" onClick={onLogin}>Log in</Button>
-            <Button mode='primary' size="small" onClick={onCreateAccount}>Sign up</Button>
-          </>
-        )}
-      </div>
-    </div>
-  </header>
+      <ButtonsDiv>
+        <Button size="small" onClick={()=>{}}>New Ingredient</Button>
+        <Button size="small" onClick={()=>{}}>New Burger</Button>
+        <Button size="small" onClick={()=>{}}>Remove Burger</Button>
+      </ButtonsDiv>
+  </StyledHeader>
 );
