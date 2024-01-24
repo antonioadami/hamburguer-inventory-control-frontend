@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import { Button } from '../button/Button';
-
-type User = {
-  name: string;
-};
-
+import { Button } from '../../shared/button/Button';
 
 const StyledHeader = styled.header`
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -29,7 +24,7 @@ const ButtonsDiv = styled.div`
 `
 
 const StyledH1 = styled.h1`
-font-weight: 700;
+  font-weight: 700;
   font-size: 20px;
   line-height: 1;
   margin: 6px 0 6px 10px;
